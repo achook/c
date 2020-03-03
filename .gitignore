@@ -1,0 +1,7 @@
+# Pliki bez rozszerzeń
+*
+!/**/
+!*.*
+
+# Ustawienia VS Code
+.vscode/

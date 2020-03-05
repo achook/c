@@ -17,13 +17,14 @@ int main() {
     scanf("%d", &input);
     for (i = BIN_SIZE-1; i >= 0; i--) {
         binary[i] = input & 1;
-        input >>= 1;
+        input  = input >> 1;
     }
 
+    pos = BIN_SIZE-1;
     for (i = 0; i < 8; i++) {
         for (j = 0; j < 4; j++) {
-            pos = BIN_SIZE - ((i*4) + j + 1);
-            sum |= (binary[pos] << j);
+            sum = sum | (binary[pos] << j);
+            pos--;
         }
 
         hexadecimal[HEX_SIZE-i-1] = hex_numbers[sum];

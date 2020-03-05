@@ -13,21 +13,30 @@ int main() {
     int x = 0;
     int c = 0;
 
+    int mask = 1;
+
     int i;
     for (i = 0; i < LENGTH; i++) {
-        x = ((a & 1<<i) | (b & 1<<i))>>i;
-        c = ((a & 1<<i) & (b & 1<<i))>>i;
+        x = (a & mask) | (b & mask);
+        x = x >> i;
+
+        c = (a & mask) & (b & mask);
+        c = c >> i;
 
         if (c & carry) {
-            sum = sum | (1<<i);
+            sum = sum | mask;
             carry = 1;
         } else if (c | (x & carry)) {
             carry = 1;
         } else if (x | carry) {
-            sum = sum | (1<<i);
+            sum = sum | mask;
             carry = 0;
         }
+
+        mask = mask << 1;
     }
 
     printf("%d\n", sum);
+
+    return 0;
 }

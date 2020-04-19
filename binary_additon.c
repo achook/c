@@ -25,7 +25,7 @@ int main() {
 
         if (c & carry) {
             sum = sum | mask;
-            carry = 1;
+            carry = 1; // not really needed
         } else if (c | (x & carry)) {
             carry = 1;
         } else if (x | carry) {

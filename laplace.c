@@ -39,6 +39,7 @@ int laplace (int initial_size, int *initial_matrix) {
         sum += *(initial_matrix+initial_columns_skip) * (int)pow(-1, initial_columns_skip+2) * laplace(initial_size-1, result_matrix);
     }
 
+    free(result_matrix);
     return sum;
 };
 
@@ -55,5 +56,6 @@ int main() {
 
 
     printf("%d\n", laplace(n, matrix));
+    free(matrix);
     return 0;
 }
